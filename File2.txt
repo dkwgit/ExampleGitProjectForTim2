@@ -1,1 +1,3 @@
 This is file 2
+
+I am adding a sentence to file 2
