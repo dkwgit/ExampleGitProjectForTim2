@@ -1,0 +1,43 @@
+1. Make the instance we are deploying a web server and give the webserver servable content by deployg assets from a repository to it.
+
+This means that we have to install web server software.
+We can either do this on Windows or on Linux.
+For linux, easiest might be Apache or Nginx.
+
+We have the webserver start with one file: index.html, saying "Welcome to our webserver, gen 1". We will push that file from a source code repository.
+then we will change that file and push the change. We want this to continuously push any changes to index.html. So when you do a git push, and have changed index.html we want that do auto-deploy to the box.
+
+2. Map of activity
+Overall the map is:
+
+a. Deployment of infrastructure via code (scripting + cloudformation)
+b. Configuration of infrasture via code
+
+(Note 1 + 2 can be collapsed sometimes).
+
+b. Continuous Deployment of code updates to the infrastructure (because in our case, our infrastructure is targetable via code) from a repository. Yes, index.html files can be thought of as code.
+
+
+Notes:
+
+Questions
+First question to answer is: how do I make my linux box be a webserver? (Find out how to trigger configuration on the box: trigger a package install).
+
+Second question to answer is: how do I set up a deployment of source code onto the box?
+
+Definitions
+Overall, CD is:
+A tool that is connected to a repo and also connected to a target and when the repo changes it auto-deploys to the targets.
+
+Tool: AWS own tools.  1. Code Deploy!  2. Jenkins. 3. Azure Devops. 4. Github
+
+Suggestion to get started: Let us use Github actions.
+Go ahead an make your own new repository in Gihub. You might want more than one.  1. Make one to have your infrastructure (EC2 instance and anything related to configuration). 2. Make one for the assets we will continously deploy to the web server.
+Find out how to use github actions to deploy file to an instance on AWS.
+
+Make me a user on both so I can take a peek.
+
+Recommendation: secure this, but putting your home address in the security as the only outside ip allowed in.!!
+
+Strong necessity: learn how to put AWS and EC2/ssh credentialsinto Github securely!! You don't want these in plain sight.  Github actions will have some mechanism for storing these kinds of things.  This is what allwos github actions to targets those kinds of resources.
+

@@ -2,9 +2,24 @@ AWSTemplateFormatVersion: '2010-09-09'
 
 Description: Tim's Sample CF template
 
+Parameters:
+
+  KeyName:
+    Type: String
+  SubNetId:
+    Type: String
+
 Resources:
+  #ASecurityGroup
+
+  #IngressRulesForASecurityGroup
+
   MyEC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
       ImageId: ami-0d5eff06f840b45e9
       InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      SubnetId: !Ref SubNetId
+      #SecurityGroupIds: 
+      #  -   special security group. ONly open port 80 and 22
